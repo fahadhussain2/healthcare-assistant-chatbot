@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const geistSans = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -17,13 +18,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  console.log("env", process.env)
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <UserProvider>
+        <body className={`${geistSans.variable} font-sans antialiased`}>{children}</body>
+      </UserProvider>
     </html>
   );
 }
