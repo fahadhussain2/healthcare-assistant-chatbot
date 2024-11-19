@@ -18,7 +18,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log("env", process.env)
   return (
     <html lang="en">
       <UserProvider>
